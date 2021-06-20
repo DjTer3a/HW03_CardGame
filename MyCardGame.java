@@ -1,19 +1,27 @@
+/**
+ * HW02 Instructions found on moodle
+ * 
+ * Style guidlines URL:-
+ * http://www.cs.bilkent.edu.tr/~adayanik/cs101/practicalwork/styleguidelines.htm
+ * 
+ * 
+ * @author Mostafa Higazy
+ * @version 20/06/2021
+ */
+
+
 import java.util.Scanner;
 import cardgame.*;
 
-// MyCardGame - provides a menu allowing any of the players to play their card,
-//              an option to see the score card, and one to quit the game at any time.
-//              When the game is over it dislays the winners.
-// author:
-// date:
+
 public class MyCardGame
 {
     public static void main( String[] args)
     {
         Scanner scan = new Scanner( System.in);
-        
         System.out.println( "Start of MyCardGame\n");
         
+
         // CONSTANTS
         final int MENU_EXIT    = 0;
         final int MENU_PLAY_P1 = 1;
@@ -22,29 +30,30 @@ public class MyCardGame
         final int MENU_PLAY_P4 = 4;
         final int MENU_SCORES  = 5;
         
+
         // VARIABLES
         Player     p1, p2, p3, p4;
         CardGame   game;
         int        selection;
-        
-        // PROGRAM CODE
+
 
         // create players...
         p1 = new Player( "p1");
         p2 = new Player( "p2");
         p3 = new Player( "p3");
         p4 = new Player( "p4");
+
         
         // create game with the 4 players...
         game = new CardGame( p1, p2, p3, p4);
         
+
         // display menu, get and process selection, until exit
         do 
         {
             // display menu
             System.out.println();
-            System.out.println( "MyCardGame   Round: " + game.getRoundNo() 
-                                 + "\t TurnOfPlayer: " + (game.getTurnOfPlayerNo()) );
+            System.out.println( "MyCardGame   Round: " + game.getRoundNo() + "\t TurnOfPlayer: " + (game.getTurnOfPlayerNo()) );
             System.out.println();
             System.out.println( MENU_PLAY_P1 + " - Player " + MENU_PLAY_P1 + " plays" );
             System.out.println( MENU_PLAY_P2 + " - Player " + MENU_PLAY_P2 + " plays" );
@@ -52,35 +61,55 @@ public class MyCardGame
             System.out.println( MENU_PLAY_P4 + " - Player " + MENU_PLAY_P4 + " plays" );
             System.out.println( MENU_SCORES  + " - Show scores" );
             
+
             // ask for and get selection
             System.out.println();
             System.out.println( "Selection (" + MENU_EXIT + " to exit): ");
             selection = scan.nextInt();
             
-            // process selection
-            if ( selection == MENU_PLAY_P1 )
+
+            // player 1 selection.
+            if ( selection == MENU_PLAY_P1 ){
                 play( p1, game);
+            }
+                
             
-            else if ( selection == MENU_PLAY_P2 )
+
+            // player 2 selection.
+            else if ( selection == MENU_PLAY_P2 ){
                 play( p2, game);
+            }
+                
             
-            else if ( selection == MENU_PLAY_P3 )
+
+            // player 3 selection.
+            else if ( selection == MENU_PLAY_P3 ){
                 play( p3, game);
-            
-            else if ( selection == MENU_PLAY_P4 )
+            }
+               
+
+            // player 4 selection.
+            else if ( selection == MENU_PLAY_P4 ){
                 play( p4, game);
-            
-            else if ( selection == MENU_SCORES )
-                // ToDo ~ System.out.println( game.showScoreCard() );
+            }
+                
+
+
+            // score selection.
+            else if ( selection == MENU_SCORES ) {
                 System.out.println( game.showScoreCard() );
-            
-            else if ( selection != MENU_EXIT)
+            }
+                
+
+            // exit selection.
+            else if ( selection != MENU_EXIT){
                 System.out.println( "Invalid selection! \n" );
+            }
+                
             
         } while ( selection != MENU_EXIT && !game.isGameOver());
 
-        // display winners...
-        // ToDo ~ game.isGameOver(); ? game.getWinners();
+        // display winners
         if ( game.isGameOver()) {
             if (game.getWinners().length > 1) {
                System.out.print( "The Winners Are : " + game.getWinners()[0].getName());
@@ -100,7 +129,6 @@ public class MyCardGame
         scan.close();   
     }
 
-    // ToDo...
     // get the card, c, that player p wants to play
     // pass c to the game, see if it accepted c from p
     // if game didn't accept the card, give c back to the player! 
