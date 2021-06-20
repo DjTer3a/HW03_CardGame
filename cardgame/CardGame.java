@@ -1,9 +1,19 @@
-package cardgame;
+/**
+ * HW02 Instructions found on moodle
+ * 
+ * Style guidlines URL:-
+ * http://www.cs.bilkent.edu.tr/~adayanik/cs101/practicalwork/styleguidelines.htm
+ * 
+ * 
+ * @author Mostafa Higazy
+ * @version 20/06/2021
+ */
 
+
+package cardgame;
 import java.util.ArrayList;
-// Cardgame
-// author:
-// date:
+
+
 public class CardGame
 {
     // properties
@@ -38,7 +48,11 @@ public class CardGame
         }
     }
     
-    // methods
+
+    /**
+     * method to play turn.
+     * @return boolean
+     */
     public boolean playTurn( Player p, Card c)
     {
         if (isGameOver() == true || isTurnOf(p) == true ) {
@@ -64,8 +78,28 @@ public class CardGame
 
         return true;
     }
+    
+
+    /**
+     * method to check if it is the turn of the player.
+     * @return boolean
+     */
+    public boolean isTurnOf( Player p)
+    {
+        if ( getTurnOfPlayerNo() == players.indexOf(p) ) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
 
 
+    /**
+     * method to update scores.
+     * @return void
+     */
     private void updateScores() {
 
         int maxCard = 0;
@@ -84,20 +118,61 @@ public class CardGame
 
     }
     
-    public boolean isTurnOf( Player p)
-    {
-        if ( getTurnOfPlayerNo() == players.indexOf(p) ) {
-            return true;
-        }
 
-        else {
-            return false;
-        }
+    /**
+     * method to get the score of the player.
+     * @return int
+     */
+    public int getScore( int playerNumber)
+    {
+        return scoreCard.getScore(playerNumber);
+    }
+    
+
+    /**
+     * method to get the name of the player.
+     * @return String
+     */
+    public String getName( int playerNumber)
+    {
+        return players.get(playerNumber).getName();
+    }
+    
+
+    /**
+     * method to get the round number of the game.
+     * @return int
+     */
+    public int getRoundNo()
+    {
+        return roundNo;
+    }
+    
+
+    /**
+     * method to get the turn of the player.
+     * @return int
+     */
+    public int getTurnOfPlayerNo()
+    {
+        return turnOfPlayer+1;
+    }
+    
+
+    /**
+     * method to show the score card.
+     * @return String
+     */
+    public String showScoreCard()
+    {
+        return scoreCard.toString();
     }
 
 
-
-
+    /**
+     * method to check if the game is over.
+     * @return boolean
+     */
     public boolean isGameOver()
     {
         if (roundNo == 13) {
@@ -108,26 +183,11 @@ public class CardGame
         }
     }
     
-    public int getScore( int playerNumber)
-    {
-        return scoreCard.getScore(playerNumber);
-    }
-    
-    public String getName( int playerNumber)
-    {
-        return players.get(playerNumber).getName();
-    }
-    
-    public int getRoundNo()
-    {
-        return roundNo;
-    }
-    
-    public int getTurnOfPlayerNo()
-    {
-        return turnOfPlayer+1;
-    }
-    
+
+    /**
+     * method to get the winner of the game.
+     * @return Player[]
+     */
     public Player[] getWinners()
     {
         Player[] winners;
@@ -144,11 +204,6 @@ public class CardGame
          }
 
         return winners;
-    }
-    
-    public String showScoreCard()
-    {
-        return scoreCard.toString();
     }
     
 }

@@ -15,29 +15,19 @@ public class Card
 {
     // PROPERTIES
     final String[] SUITS = { "Hearts", "Diamonds", "Spades", "Clubs"};
-    final String[] FACES = { "A", "2", "3", "4", "5",
-                             "6", "7", "8", "9", "10",
-                             "J", "Q", "K"};
+    final String[] FACES = { "A", "2", "3", "4", "5","6", "7", "8", "9", "10","J", "Q", "K"};
     final int NOOFCARDSINSUIT = 13;
     int  cardNo;
     
+    
     // CONSTRUCTORS
-    public Card( int faceValue, int suit )
-    {
-        cardNo = faceValue + suit * NOOFCARDSINSUIT;
-    }
     public Card( int cardNumber)
     {
         cardNo = cardNumber;
     }
-    
-
-    /**
-     * method to get the card number.
-     * @return int cardNo
-     */
-    public int getCardNo() {
-        return this.cardNo;
+    public Card( int faceValue, int suit )
+    {
+        cardNo = faceValue + suit * NOOFCARDSINSUIT;
     }
     
     /**
@@ -49,6 +39,14 @@ public class Card
         return cardNo % NOOFCARDSINSUIT;
     }
     
+    /**
+     * method to get the card number.
+     * @return int cardNo
+     */
+    public int getCardNo() {
+        return this.cardNo;
+    }
+    
 
     /**
      * method to get the card suit.
@@ -57,34 +55,6 @@ public class Card
     public int getSuit()
     {
         return cardNo / NOOFCARDSINSUIT;
-    }
-    
-
-    /**
-     * method to convert anything in the class to string.
-     * @return String 
-     */
-    public String toString()
-    {
-        return FACES[ getFaceValue() ] + " of " + SUITS[ getSuit() ];
-    }
-    
-
-    /**
-     * method to check if two cards are equal.
-     * @return boolean 
-     */
-    public boolean equals( Card c)
-    {
-        if (this.getFaceValue() == c.getFaceValue() && this.getSuit() == c.getSuit() ) {
-            return true;
-        }
-
-        else {
-
-        return false;
-        
-        }
     }
     
 
@@ -107,5 +77,33 @@ public class Card
                 return -1;
             }
         }
+    }
+    
+
+    /**
+     * method to check if two cards are equal.
+     * @return boolean 
+     */
+    public boolean equals( Card c)
+    {
+        if (this.getFaceValue() == c.getFaceValue() && this.getSuit() == c.getSuit() ) {
+            return true;
+        }
+
+        else {
+
+        return false;
+        
+        }
+    }
+    
+
+    /**
+     * method to convert anything in the class to string.
+     * @return String 
+     */
+    public String toString()
+    {
+        return FACES[ getFaceValue() ] + " of " + SUITS[ getSuit() ];
     }
 }

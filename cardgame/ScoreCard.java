@@ -1,16 +1,26 @@
+/**
+ * HW02 Instructions found on moodle
+ * 
+ * Style guidlines URL:-
+ * http://www.cs.bilkent.edu.tr/~adayanik/cs101/practicalwork/styleguidelines.htm
+ * 
+ * 
+ * @author Mostafa Higazy
+ * @version 20/06/2021
+ */
+
+
 package cardgame;
 import java.util.ArrayList;
 
-// ScoreCard - Maintains one integer score per player, for any number of players
-//             Caution: invalid playernumbers result in run-time exception!
-// author:
-// date:
+
+
 public class ScoreCard
 {
     // properties
     int[] scores;
     
-    // constructors
+    // constructor
     public ScoreCard( int noOfPlayers)
     {
         scores = new int[noOfPlayers];
@@ -20,34 +30,31 @@ public class ScoreCard
             scores[i] = 0;
     }
     
-    // methods
-    public int getScore( int playerNo)
-    {
-        return scores[ playerNo];
-    }
-    
+
+    /**
+     * method to update the ScoreCard with the player's score.
+     * @return void
+     */
     public void update( int playerNo, int amount)
     {
         scores[playerNo] += amount;
     }
     
-    public String toString()
+
+    /**
+     * method to get the player's score.
+     * @return int
+     */
+    public int getScore( int playerNo)
     {
-        String s;
-        s = "\n"
-            + "_____________\n"
-            + "\nPlayer\tScore\n"
-            + "_____________\n";
-        
-        for ( int playerNo = 0; playerNo < scores.length; playerNo++)
-        {
-            s = s + (playerNo+1) + "\t" + scores[playerNo] + "\n";
-        }
-        
-        s += "_____________\n";
-        return s;
+        return scores[ playerNo];
     }
     
+
+    /**
+     * method to get the winner of the game.
+     * @return int[]
+     */
     public int[] getWinners()
     {
         int[] winners;
@@ -72,4 +79,25 @@ public class ScoreCard
         return winners;
     }
     
+
+    /**
+     * method to convert anything in the class to string.
+     * @return String
+     */
+    public String toString()
+    {
+        String s;
+        s = "\n"
+            + "_____________\n"
+            + "\nPlayer\tScore\n"
+            + "_____________\n";
+        
+        for ( int playerNo = 0; playerNo < scores.length; playerNo++)
+        {
+            s = s + (playerNo+1) + "\t" + scores[playerNo] + "\n";
+        }
+        
+        s += "_____________\n";
+        return s;
+    }
 } // end class ScoreCard
